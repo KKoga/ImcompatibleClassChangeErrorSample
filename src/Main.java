@@ -28,6 +28,17 @@ public class Main
 
         System.out.println("==============================");
 
+        System.out.println("base var cast test");
+        try
+        {
+            base_var_cast_test();
+        } catch (Error e)
+        {
+            System.out.println("error " + e);
+        }
+
+        System.out.println("==============================");
+
         System.out.println("var free test");
         try
         {
@@ -54,9 +65,17 @@ public class Main
         System.out.println("bool="+b);
     }
 
+    static void base_var_cast_test()
+    {
+        Base d = new Derived();
+	boolean b = ((Derived)d).isOk();
+        System.out.println("bool="+b);
+    }
+
     static void var_free_test()
     {
-	boolean b = new Derived().isOk();
+        Object d = new Derived();
+	boolean b = ((Derived)d).isOk();
         System.out.println("bool="+b);
     }
 }
